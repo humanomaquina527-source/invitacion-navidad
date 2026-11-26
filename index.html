@@ -89,7 +89,7 @@
 
   <button class="music-btn" id="music-btn">🔊</button>
 
-  <!-- REPRODUCTOR DE YOUTUBE OCULTO (NUNCA FALLA) -->
+  <!-- REPRODUCTOR DE YOUTUBE OCULTO (NOCHE DE PAZ) -->
   <div id="youtube-player" style="position:fixed; bottom:-500px; left:-500px; width:10px; height:10px; opacity:0; pointer-events:none;"></div>
 
 <script>
@@ -116,8 +116,8 @@
   function onYouTubeIframeAPIReady() {
     player = new YT.Player('youtube-player', {
       height: '10', width: '10',
-      videoId: '7wtfhZwyrcc', // Video de Noche de Paz instrumental
-      playerVars: { 'autoplay': 0, 'controls': 0, 'loop': 1, 'playlist': '7wtfhZwyrcc' },
+      videoId: 'qJ0L3U6yYqE', // Noche de Paz instrumental
+      playerVars: { 'autoplay': 0, 'controls': 0, 'loop': 1, 'playlist': 'qJ0L3U6yYqE' },
       events: { 'onReady': onPlayerReady }
     });
   }
@@ -158,5 +158,4 @@
   });
 </script>
 </body>
-</html>
 </html>
