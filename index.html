@@ -4,8 +4,8 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 <title>Invitación Cena de Navidad - Duce</title>
-<!-- Fuentes elegantes de Google Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<!-- Fuentes vintage y manuscritas -->
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Playfair+Display:ital,wght@0,400;1,400&family=Great+Vibes&display=swap" rel="stylesheet">
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -15,18 +15,17 @@
     align-items: center;
     justify-content: center;
     font-family: 'Playfair Display', serif;
-    /* Fondo exterior azul noche profundo */
-    background: radial-gradient(circle at center, #1e2a45 0%, #0a0f1a 100%);
+    background: radial-gradient(circle at center, #2a1f18 0%, #110d09 100%);
     overflow: hidden;
     padding: 15px;
   }
 
-  /* Copos de nieve cayendo */
+  /* Copos de nieve */
   .snow {
     position: fixed;
     top: -10px;
     color: #fff;
-    opacity: 0.6;
+    opacity: 0.5;
     pointer-events: none;
     animation: fall linear infinite;
     z-index: 1;
@@ -40,8 +39,8 @@
     position: relative;
     width: 100%;
     max-width: 480px;
-    height: 80vh;
-    max-height: 700px;
+    height: 82vh;
+    max-height: 750px;
     perspective: 2000px;
     z-index: 2;
   }
@@ -49,215 +48,172 @@
   .page {
     position: absolute;
     inset: 0;
-    border-radius: 12px;
-    /* Fondo blanco hueso */
-    background: #fffdf8;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.6), inset 0 0 20px rgba(212, 175, 55, 0.15);
-    padding: 40px 30px;
+    border-radius: 10px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.8);
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    text-align: center;
-    color: #2c3e50;
     backface-visibility: hidden;
-    border: 2px solid #d4af37; /* Borde dorado exterior */
   }
 
-  /* Portada */
+  /* PORTADA CON TU IMAGEN */
   .cover {
     transform-origin: left center;
     transition: transform 1.5s cubic-bezier(.4,.2,.2,1);
     z-index: 3;
-  }
-  
-  /* Marco dorado interior de la portada */
-  .cover::before {
-    content: '';
-    position: absolute;
-    inset: 12px;
-    border: 1px solid rgba(212, 175, 55, 0.5);
-    border-radius: 8px;
-    pointer-events: none;
-  }
-
-  .cover h1 {
-    font-family: 'Great Vibes', cursive;
-    font-size: 3.2rem;
-    margin-bottom: 5px;
-    color: #b8932a;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
-    line-height: 1.1;
-    margin-top: 20px;
-  }
-  
-  /* Árbol de Navidad con diamantina */
-  .arbol-container {
-    position: relative;
-    display: inline-block;
-    margin: 20px auto;
-  }
-  .arbol {
-    font-size: 7rem;
-    line-height: 1;
-    filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.5)); /* Brillo */
-  }
-  /* Destellos de diamantina */
-  .brillo {
-    position: absolute;
-    font-size: 1.5rem;
-    animation: destellar 2s infinite alternate;
-  }
-  .b1 { top: 10%; left: -10%; animation-delay: 0s; }
-  .b2 { top: 40%; right: -15%; animation-delay: 0.5s; }
-  .b3 { bottom: 10%; left: 10%; animation-delay: 1s; }
-  .b4 { top: 0%; right: 20%; animation-delay: 1.5s; }
-  
-  @keyframes destellar {
-    0% { opacity: 0.2; transform: scale(0.8); }
-    100% { opacity: 1; transform: scale(1.3); }
-  }
-
-  .cover p { 
-    font-size: 1.1rem; 
-    color: #666; 
-    font-style: italic; 
-    margin-top: 15px;
+    background-image: url('portada.jpg'); /* AQUI SE CARGA TU IMAGEN */
+    background-size: cover;
+    background-position: center;
+    border: 1px solid #a67c52; /* Borde sutil */
+    cursor: pointer;
   }
 
   /* Animación de apertura */
   .book.open .cover {
-    transform: rotateY(-170deg);
+    transform: rotateY(-175deg);
   }
 
-  /* Interior de la tarjeta */
+  /* INTERIOR: SIMULANDO EL MISMO PAPEL ANTIGUO */
   .inside {
     z-index: 2;
     overflow-y: auto;
-    justify-content: flex-start;
-    /* Efecto de papel rayado antiguo */
-    background: 
-      repeating-linear-gradient(transparent, transparent 31px, #e0e0e0 31px, #e0e0e0 32px),
-      linear-gradient(to right, #fdfbf7, #f4efe6);
-    background-color: #fdfbf7;
+    background-color: #ece3d2;
+    /* Textura de papel envejecido */
+    background-image: 
+      radial-gradient(circle at 50% 50%, rgba(255,255,255,0.4) 0%, transparent 80%),
+      url('https://www.transparenttextures.com/patterns/aged-paper.png');
+    border: 1px solid #a67c52;
     padding: 40px 30px;
-    border-left: 1px solid #d4af37; /* Simula el lomo del cuaderno */
-    box-shadow: inset 5px 0 15px rgba(0,0,0,0.05);
+    color: #3e2b1e;
+    justify-content: flex-start;
+    position: relative;
+  }
+
+  /* Adorno 3D interior (Esferas navideñas) */
+  .adorno-3d {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2rem;
+    filter: drop-shadow(0 5px 5px rgba(0,0,0,0.3));
+    z-index: 5;
   }
 
   .inside h2 {
-    font-family: 'Great Vibes', cursive;
-    font-size: 2.8rem;
-    color: #b8932a;
+    font-family: 'Cinzel', serif;
+    font-size: 1.6rem;
+    color: #5a3a22;
+    text-align: center;
+    margin-top: 30px;
     margin-bottom: 5px;
-    margin-top: 10px;
+    font-weight: 700;
+  }
+
+  .inside .divisor {
+    width: 70%;
+    height: 2px;
+    background: linear-gradient(to right, transparent, #a67c52, transparent);
+    margin: 0 auto 15px auto;
   }
 
   .inside .fecha {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Cinzel', serif;
     font-size: 1rem;
-    color: #8a6d1c;
+    color: #6b4423;
+    text-align: center;
     margin-bottom: 30px;
-    font-weight: bold;
+    font-weight: 600;
     letter-spacing: 1px;
-    text-transform: uppercase;
   }
 
   /* Texto como si estuviera escrito a mano */
   .inside p {
     font-family: 'Playfair Display', serif;
     font-size: 1.05rem;
-    line-height: 32px; /* Coincide exacto con las rayas del papel */
-    margin-bottom: 32px;
-    text-align: left;
-    color: #333;
+    line-height: 1.7;
+    margin-bottom: 18px;
+    text-align: justify;
+    color: #2c1e14;
     font-style: italic;
-    padding-left: 5px;
+    text-shadow: 1px 1px 1px rgba(255,255,255,0.5); /* Le da relieve al texto sobre el papel */
   }
 
   .firma {
     font-family: 'Great Vibes', cursive;
     font-size: 2.5rem;
     text-align: right;
-    color: #b8932a;
-    margin-top: 30px;
-    padding-right: 20px;
-    line-height: 1;
+    color: #5a3a22;
+    margin-top: 20px;
+    padding-right: 10px;
   }
 
-  /* Botón de abrir */
-  .btn {
+  /* Botones */
+  .controls {
     position: fixed;
-    bottom: 30px;
-    left: 50%;
-    transform: translateX(-50%);
+    bottom: 25px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
     z-index: 10;
-    padding: 16px 40px;
-    font-size: 1.1rem;
-    font-family: 'Playfair Display', serif;
-    letter-spacing: 1px;
-    border: 2px solid #fff;
-    border-radius: 50px;
-    background: linear-gradient(135deg, #d4af37, #b8932a);
-    color: #fff;
-    cursor: pointer;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-    transition: transform .2s, box-shadow .2s;
   }
-  .btn:hover { transform: translateX(-50%) scale(1.05); }
+
+  .btn {
+    padding: 15px 30px;
+    font-size: 1rem;
+    font-family: 'Cinzel', serif;
+    letter-spacing: 1px;
+    border: 2px solid #a67c52;
+    border-radius: 5px;
+    background: #2c1e14;
+    color: #e8d5b5;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.6);
+    transition: all 0.3s;
+  }
+  .btn:hover { background: #4a3525; }
   .btn.hidden { display: none; }
 
-  /* Botón flotante para la música */
   .music-btn {
-    position: fixed;
-    bottom: 30px;
-    right: 20px;
-    z-index: 10;
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.15);
-    border: 1px solid rgba(255, 255, 255, 0.4);
-    color: #fff;
-    font-size: 1.5rem;
+    background: rgba(44, 30, 20, 0.8);
+    border: 1px solid #a67c52;
+    color: #e8d5b5;
+    font-size: 1.2rem;
     cursor: pointer;
-    display: none;
+    display: flex;
     align-items: center;
     justify-content: center;
     backdrop-filter: blur(5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
   }
 
   @media (max-width: 400px) {
     .book { height: 85vh; }
-    .cover h1 { font-size: 2.8rem; }
-    .inside p { font-size: 0.95rem; line-height: 32px; }
-    .inside h2 { font-size: 2.2rem; }
-    .firma { font-size: 2rem; }
+    .inside h2 { font-size: 1.4rem; }
+    .inside p { font-size: 0.95rem; }
   }
 </style>
 </head>
 <body>
 
   <div class="book" id="book">
-    <!-- PORTADA CON ÁRBOL DE DIAMANTINA -->
-    <div class="page cover">
-      <h1>Invitación</h1>
-      
-      <div class="arbol-container">
-        <span class="brillo b1">✨</span>
-        <span class="brillo b2">✨</span>
-        <span class="brillo b3">✨</span>
-        <span class="brillo b4">✨</span>
-        <div class="arbol">🎄</div>
-      </div>
-
-      <p>Cena de Navidad en familia</p>
-      <p style="margin-top:35px; font-size:0.85rem; color:#b8932a; font-family: 'Playfair Display', serif; text-transform: uppercase;">Toca el botón para abrir</p>
+    
+    <!-- PORTADA CON TU IMAGEN -->
+    <div class="page cover" id="cover">
+      <!-- No necesita texto, la imagen ya lo tiene -->
     </div>
 
-    <!-- INTERIOR CON PAPEL RAYADO -->
+    <!-- INTERIOR -->
     <div class="page inside">
+      <div class="adorno-3d">🔔🎄🔔</div>
+      
       <h2>Los esperamos en casa</h2>
-      <div class="fecha">24 de Diciembre · 5:00 PM en adelante</div>
+      <div class="divisor"></div>
+      <div class="fecha">24 de Diciembre · 5:00 PM</div>
 
       <p>Hola a todos:</p>
 
@@ -273,46 +229,53 @@
     </div>
   </div>
 
-  <button class="btn" id="btn">Abrir invitación</button>
-  <button class="music-btn" id="music-btn">🔊</button>
+  <div class="controls">
+    <button class="btn" id="btn">Abrir invitación</button>
+    <button class="music-btn" id="music-btn" style="display:none;">🔊</button>
+  </div>
 
-  <!-- Música: Villancico instrumental clásico -->
+  <!-- AUDIO: NOCHE DE PAZ (SILENT NIGHT) INSTRUMENTAL -->
   <audio id="bg-music" loop>
-    <source src="https://www.chosic.com/wp-content/uploads/2022/11/Deck-the-Halls.mp3" type="audio/mpeg">
+    <source src="https://ia801504.us.archive.org/31/items/SilentNight_776/KevinMacLeod_SilentNight.mp3" type="audio/mpeg">
   </audio>
 
 <script>
-  // Copos de nieve animados
+  // Copos de nieve
   const snowChars = ['❄','❅','❆','•'];
-  for (let i = 0; i < 50; i++) {
+  for (let i = 0; i < 40; i++) {
     const s = document.createElement('div');
     s.className = 'snow';
     s.textContent = snowChars[Math.floor(Math.random()*snowChars.length)];
     s.style.left = Math.random() * 100 + 'vw';
-    s.style.fontSize = (10 + Math.random() * 20) + 'px';
+    s.style.fontSize = (8 + Math.random() * 15) + 'px';
     s.style.animationDuration = (6 + Math.random() * 8) + 's';
     s.style.animationDelay = (Math.random() * 8) + 's';
     document.body.appendChild(s);
   }
 
   const book = document.getElementById('book');
+  const cover = document.getElementById('cover');
   const btn = document.getElementById('btn');
   const musicBtn = document.getElementById('music-btn');
   const audio = document.getElementById('bg-music');
 
-  // Abrir tarjeta y música
-  btn.addEventListener('click', () => {
+  function abrirTarjeta() {
     book.classList.add('open');
     btn.classList.add('hidden');
     musicBtn.style.display = 'flex';
 
-    audio.volume = 0.6; 
-    audio.play().catch(error => {
-      console.log("El navegador bloqueó el autoplay inicial.");
+    // Intentar reproducir audio
+    audio.volume = 0.5; 
+    audio.play().catch(e => {
+      console.log("El navegador bloqueó el autoplay, pero el botón ya fue presionado.");
     });
-  });
+  }
 
-  // Pausar/reanudar música
+  // Se puede abrir dando clic al botón o directo a la portada
+  btn.addEventListener('click', abrirTarjeta);
+  cover.addEventListener('click', abrirTarjeta);
+
+  // Botón para silenciar
   musicBtn.addEventListener('click', () => {
     if (audio.paused) {
       audio.play();
