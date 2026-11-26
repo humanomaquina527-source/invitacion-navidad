@@ -4,7 +4,6 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 <title>Invitación Cena de Navidad - Duce</title>
-<!-- Fuentes vintage y manuscritas -->
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Playfair+Display:ital,wght@0,400;1,400&family=Great+Vibes&display=swap" rel="stylesheet">
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -22,221 +21,141 @@
 
   /* Copos de nieve */
   .snow {
-    position: fixed;
-    top: -10px;
-    color: #fff;
-    opacity: 0.5;
-    pointer-events: none;
-    animation: fall linear infinite;
-    z-index: 1;
+    position: fixed; top: -10px; color: #fff; opacity: 0.6; pointer-events: none; animation: fall linear infinite; z-index: 1;
   }
-  @keyframes fall {
-    to { transform: translateY(110vh) rotate(360deg); }
-  }
+  @keyframes fall { to { transform: translateY(110vh) rotate(360deg); } }
 
-  /* Contenedor de la tarjeta */
   .book {
-    position: relative;
-    width: 100%;
-    max-width: 480px;
-    height: 82vh;
-    max-height: 750px;
-    perspective: 2000px;
-    z-index: 2;
+    position: relative; width: 100%; max-width: 480px; height: 82vh; max-height: 750px; perspective: 2000px; z-index: 2;
   }
 
   .page {
-    position: absolute;
-    inset: 0;
-    border-radius: 10px;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.8);
-    display: flex;
-    flex-direction: column;
-    backface-visibility: hidden;
+    position: absolute; inset: 0; border-radius: 10px; box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+    display: flex; flex-direction: column; backface-visibility: hidden;
   }
 
-  /* PORTADA CON TU IMAGEN */
+  /* PORTADA VINTAGE HECHA CON CSS (No requiere imagen externa) */
   .cover {
-    transform-origin: left center;
-    transition: transform 1.5s cubic-bezier(.4,.2,.2,1);
-    z-index: 3;
-    background-image: url('portada.jpg'); /* AQUI SE CARGA TU IMAGEN */
-    background-size: cover;
-    background-position: center;
-    border: 1px solid #a67c52; /* Borde sutil */
+    transform-origin: left center; transition: transform 1.5s cubic-bezier(.4,.2,.2,1); z-index: 3;
+    background: #f4ebd9;
+    background-image: 
+      radial-gradient(circle at 50% 50%, rgba(255,255,255,0.6) 0%, transparent 70%),
+      url('https://www.transparenttextures.com/patterns/aged-paper.png');
+    border: 3px solid #a67c52; 
     cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 30px;
+  }
+
+  .cover h1 {
+    font-family: 'Cinzel', serif;
+    font-size: 2.5rem;
+    color: #5a3a22;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+
+  /* Árbol hecho con formas CSS */
+  .tree-container {
+    margin-top: 20px;
+    font-size: 6rem;
+    filter: drop-shadow(0 10px 10px rgba(0,0,0,0.3));
   }
 
   /* Animación de apertura */
-  .book.open .cover {
-    transform: rotateY(-175deg);
-  }
+  .book.open .cover { transform: rotateY(-175deg); }
 
-  /* INTERIOR: SIMULANDO EL MISMO PAPEL ANTIGUO */
+  /* INTERIOR PAPEL ANTIGUO */
   .inside {
-    z-index: 2;
-    overflow-y: auto;
+    z-index: 2; overflow-y: auto;
     background-color: #ece3d2;
-    /* Textura de papel envejecido */
-    background-image: 
-      radial-gradient(circle at 50% 50%, rgba(255,255,255,0.4) 0%, transparent 80%),
-      url('https://www.transparenttextures.com/patterns/aged-paper.png');
-    border: 1px solid #a67c52;
-    padding: 40px 30px;
+    background-image: url('https://www.transparenttextures.com/patterns/aged-paper.png');
+    border: 2px solid #a67c52;
+    padding: 30px 25px;
     color: #3e2b1e;
     justify-content: flex-start;
     position: relative;
   }
 
-  /* Adorno 3D interior (Esferas navideñas) */
-  .adorno-3d {
-    position: absolute;
-    top: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 2rem;
-    filter: drop-shadow(0 5px 5px rgba(0,0,0,0.3));
-    z-index: 5;
-  }
-
   .inside h2 {
-    font-family: 'Cinzel', serif;
-    font-size: 1.6rem;
-    color: #5a3a22;
-    text-align: center;
-    margin-top: 30px;
-    margin-bottom: 5px;
-    font-weight: 700;
+    font-family: 'Cinzel', serif; font-size: 1.5rem; color: #5a3a22; text-align: center; margin-top: 10px; margin-bottom: 5px;
   }
 
-  .inside .divisor {
-    width: 70%;
-    height: 2px;
-    background: linear-gradient(to right, transparent, #a67c52, transparent);
-    margin: 0 auto 15px auto;
+  .divisor {
+    width: 70%; height: 2px; background: linear-gradient(to right, transparent, #a67c52, transparent); margin: 0 auto 15px auto;
   }
 
-  .inside .fecha {
-    font-family: 'Cinzel', serif;
-    font-size: 1rem;
-    color: #6b4423;
-    text-align: center;
-    margin-bottom: 30px;
-    font-weight: 600;
-    letter-spacing: 1px;
+  .fecha {
+    font-family: 'Cinzel', serif; font-size: 0.95rem; color: #6b4423; text-align: center; margin-bottom: 20px; font-weight: 600;
   }
 
-  /* Texto como si estuviera escrito a mano */
   .inside p {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.05rem;
-    line-height: 1.7;
-    margin-bottom: 18px;
-    text-align: justify;
-    color: #2c1e14;
-    font-style: italic;
-    text-shadow: 1px 1px 1px rgba(255,255,255,0.5); /* Le da relieve al texto sobre el papel */
+    font-family: 'Playfair Display', serif; font-size: 1rem; line-height: 1.6; margin-bottom: 15px; text-align: justify; font-style: italic;
   }
 
   .firma {
-    font-family: 'Great Vibes', cursive;
-    font-size: 2.5rem;
-    text-align: right;
-    color: #5a3a22;
-    margin-top: 20px;
-    padding-right: 10px;
+    font-family: 'Great Vibes', cursive; font-size: 2.5rem; text-align: right; color: #5a3a22; margin-top: 15px; padding-right: 10px;
   }
 
-  /* Botones */
-  .controls {
-    position: fixed;
-    bottom: 25px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
-    z-index: 10;
-  }
-
+  /* BOTONES */
   .btn {
-    padding: 15px 30px;
+    position: absolute;
+    bottom: 30px;
+    padding: 12px 25px;
     font-size: 1rem;
     font-family: 'Cinzel', serif;
-    letter-spacing: 1px;
     border: 2px solid #a67c52;
     border-radius: 5px;
     background: #2c1e14;
     color: #e8d5b5;
     cursor: pointer;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.6);
-    transition: all 0.3s;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    z-index: 10;
   }
-  .btn:hover { background: #4a3525; }
   .btn.hidden { display: none; }
 
   .music-btn {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background: rgba(44, 30, 20, 0.8);
-    border: 1px solid #a67c52;
-    color: #e8d5b5;
-    font-size: 1.2rem;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    backdrop-filter: blur(5px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
-  }
-
-  @media (max-width: 400px) {
-    .book { height: 85vh; }
-    .inside h2 { font-size: 1.4rem; }
-    .inside p { font-size: 0.95rem; }
+    position: fixed; bottom: 20px; right: 20px; width: 50px; height: 50px; border-radius: 50%;
+    background: rgba(44, 30, 20, 0.9); border: 2px solid #a67c52; color: #e8d5b5; font-size: 1.2rem;
+    cursor: pointer; display: none; align-items: center; justify-content: center; z-index: 20;
   }
 </style>
 </head>
 <body>
 
   <div class="book" id="book">
-    
-    <!-- PORTADA CON TU IMAGEN -->
+    <!-- PORTADA (Se abre al darle clic) -->
     <div class="page cover" id="cover">
-      <!-- No necesita texto, la imagen ya lo tiene -->
+      <h1>Invitación</h1>
+      <div class="tree-container">🎄</div>
+      <p style="margin-top:20px; color:#6b4423; font-family:'Cinzel', serif;">Cena de Navidad</p>
+      <button class="btn" id="btn">Abrir Tarjeta</button>
     </div>
 
     <!-- INTERIOR -->
     <div class="page inside">
-      <div class="adorno-3d">🔔🎄🔔</div>
-      
       <h2>Los esperamos en casa</h2>
       <div class="divisor"></div>
       <div class="fecha">24 de Diciembre · 5:00 PM</div>
 
       <p>Hola a todos:</p>
-
       <p>Les escribo porque se acercan las fiestas y he estado pensando mucho en nosotros. Sé que no hemos estado cerca, que ha habido diferencias y comentarios que han dolido, y no voy a fingir que no ha pasado nada. Pero también he pensado en papá y mamá, que ya están grandes, y en cómo la vida pasa tan rápido que a veces no nos damos cuenta de que el tiempo con ellos es un regalo que no se repite.</p>
-
       <p>Por eso los invito a una cena de Navidad en la casa de mis papás. No es para hablar del pasado ni para forzar nada. Es solo para estar juntos un rato, compartir la mesa y darles a papá y mamá la alegría de vernos reunidos el tiempo que se pueda.</p>
-
       <p>Solo les pido algo: vengan con el corazón sincero, sin comentarios que no sean buenos. Si sienten que pueden venir así, adelante, los espero con gusto. Si no, lo lamento, pero lo entiendo. Yo también me estoy tragando mi orgullo, y me gustaría que entre hermanos pudiéramos hacer lo mismo.</p>
-
       <p>Vengan a la hora que gusten. Por favor confírmenme si pueden asistir para ir organizándome.</p>
 
       <div class="firma">Con cariño,<br>Duce</div>
     </div>
   </div>
 
-  <div class="controls">
-    <button class="btn" id="btn">Abrir invitación</button>
-    <button class="music-btn" id="music-btn" style="display:none;">🔊</button>
-  </div>
+  <button class="music-btn" id="music-btn">🔊</button>
 
-  <!-- AUDIO: NOCHE DE PAZ (SILENT NIGHT) INSTRUMENTAL -->
+  <!-- AUDIO: Pista de Noche de Paz desde un servidor confiable -->
   <audio id="bg-music" loop>
-    <source src="https://ia801504.us.archive.org/31/items/SilentNight_776/KevinMacLeod_SilentNight.mp3" type="audio/mpeg">
+    <source src="https://cdn.pixabay.com/download/audio/2022/11/23/audio_9504e11404.mp3?filename=silent-night-christmas-piano-117139.mp3" type="audio/mpeg">
   </audio>
 
 <script>
@@ -259,23 +178,21 @@
   const musicBtn = document.getElementById('music-btn');
   const audio = document.getElementById('bg-music');
 
-  function abrirTarjeta() {
+  // FUNCIÓN ABRIR
+  function abrirTarjeta(e) {
+    if(e) e.stopPropagation(); // Evita conflictos de clics
     book.classList.add('open');
     btn.classList.add('hidden');
     musicBtn.style.display = 'flex';
 
-    // Intentar reproducir audio
     audio.volume = 0.5; 
-    audio.play().catch(e => {
-      console.log("El navegador bloqueó el autoplay, pero el botón ya fue presionado.");
-    });
+    audio.play().catch(err => console.log("Audio bloqueado por el navegador", err));
   }
 
-  // Se puede abrir dando clic al botón o directo a la portada
+  // Eventos
   btn.addEventListener('click', abrirTarjeta);
-  cover.addEventListener('click', abrirTarjeta);
+  cover.addEventListener('click', abrirTarjeta); // También abre si tocan la portada
 
-  // Botón para silenciar
   musicBtn.addEventListener('click', () => {
     if (audio.paused) {
       audio.play();
