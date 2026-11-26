@@ -4,6 +4,8 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 <title>Invitación Cena de Navidad - Duce</title>
+<!-- Fuentes elegantes de Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -12,9 +14,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: 'Georgia', 'Times New Roman', serif;
-    /* Fondo exterior elegante azul noche con destellos */
-    background: radial-gradient(circle at center, #2a3b5c 0%, #111827 100%);
+    font-family: 'Playfair Display', serif;
+    /* Fondo exterior azul noche profundo */
+    background: radial-gradient(circle at center, #1e2a45 0%, #0a0f1a 100%);
     overflow: hidden;
     padding: 15px;
   }
@@ -47,49 +49,80 @@
   .page {
     position: absolute;
     inset: 0;
-    border-radius: 15px;
-    /* Fondo blanco hueso elegante */
-    background: linear-gradient(135deg, #ffffff 0%, #fdfbf7 100%);
-    box-shadow: 0 20px 50px rgba(0,0,0,0.6), inset 0 0 30px rgba(212, 175, 55, 0.1);
+    border-radius: 12px;
+    /* Fondo blanco hueso */
+    background: #fffdf8;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.6), inset 0 0 20px rgba(212, 175, 55, 0.15);
     padding: 40px 30px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     text-align: center;
-    color: #333;
+    color: #2c3e50;
     backface-visibility: hidden;
-    border: 2px solid #d4af37; /* Borde dorado */
+    border: 2px solid #d4af37; /* Borde dorado exterior */
   }
 
-  /* Portada de la tarjeta */
+  /* Portada */
   .cover {
     transform-origin: left center;
     transition: transform 1.5s cubic-bezier(.4,.2,.2,1);
     z-index: 3;
   }
   
-  /* Marco interior dorado en la portada */
+  /* Marco dorado interior de la portada */
   .cover::before {
     content: '';
     position: absolute;
     inset: 12px;
-    border: 1.5px solid rgba(212, 175, 55, 0.6);
-    border-radius: 10px;
+    border: 1px solid rgba(212, 175, 55, 0.5);
+    border-radius: 8px;
     pointer-events: none;
   }
 
   .cover h1 {
-    font-size: 2.2rem;
-    letter-spacing: 3px;
-    margin-bottom: 15px;
-    color: #9d7c22; /* Dorado oscuro para que se lea en blanco */
-    text-shadow: 0 2px 5px rgba(212, 175, 55, 0.3);
-    line-height: 1.2;
-    font-weight: normal;
+    font-family: 'Great Vibes', cursive;
+    font-size: 3.2rem;
+    margin-bottom: 5px;
+    color: #b8932a;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    line-height: 1.1;
+    margin-top: 20px;
   }
   
-  .cover .adorno { font-size: 2.5rem; margin: 15px 0; color: #d4af37; }
-  .cover p { font-size: 1.1rem; color: #666; line-height: 1.6; font-style: italic; }
+  /* Árbol de Navidad con diamantina */
+  .arbol-container {
+    position: relative;
+    display: inline-block;
+    margin: 20px auto;
+  }
+  .arbol {
+    font-size: 7rem;
+    line-height: 1;
+    filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.5)); /* Brillo */
+  }
+  /* Destellos de diamantina */
+  .brillo {
+    position: absolute;
+    font-size: 1.5rem;
+    animation: destellar 2s infinite alternate;
+  }
+  .b1 { top: 10%; left: -10%; animation-delay: 0s; }
+  .b2 { top: 40%; right: -15%; animation-delay: 0.5s; }
+  .b3 { bottom: 10%; left: 10%; animation-delay: 1s; }
+  .b4 { top: 0%; right: 20%; animation-delay: 1.5s; }
+  
+  @keyframes destellar {
+    0% { opacity: 0.2; transform: scale(0.8); }
+    100% { opacity: 1; transform: scale(1.3); }
+  }
+
+  .cover p { 
+    font-size: 1.1rem; 
+    color: #666; 
+    font-style: italic; 
+    margin-top: 15px;
+  }
 
   /* Animación de apertura */
   .book.open .cover {
@@ -101,56 +134,54 @@
     z-index: 2;
     overflow-y: auto;
     justify-content: flex-start;
+    /* Efecto de papel rayado antiguo */
     background: 
-      radial-gradient(circle at 10% 10%, rgba(212, 175, 55, 0.1) 0%, transparent 20%),
-      radial-gradient(circle at 90% 90%, rgba(212, 175, 55, 0.1) 0%, transparent 20%),
-      linear-gradient(135deg, #ffffff 0%, #fdfbf7 100%);
+      repeating-linear-gradient(transparent, transparent 31px, #e0e0e0 31px, #e0e0e0 32px),
+      linear-gradient(to right, #fdfbf7, #f4efe6);
+    background-color: #fdfbf7;
+    padding: 40px 30px;
+    border-left: 1px solid #d4af37; /* Simula el lomo del cuaderno */
+    box-shadow: inset 5px 0 15px rgba(0,0,0,0.05);
   }
 
   .inside h2 {
-    font-size: 1.6rem;
-    color: #9d7c22;
-    margin-bottom: 10px;
+    font-family: 'Great Vibes', cursive;
+    font-size: 2.8rem;
+    color: #b8932a;
+    margin-bottom: 5px;
     margin-top: 10px;
-    font-weight: normal;
-  }
-
-  .inside .divisor {
-    width: 60%;
-    height: 1px;
-    background: linear-gradient(to right, transparent, #d4af37, transparent);
-    margin: 0 auto 20px auto;
   }
 
   .inside .fecha {
-    font-size: 1.05rem;
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
     color: #8a6d1c;
-    margin-bottom: 25px;
+    margin-bottom: 30px;
     font-weight: bold;
     letter-spacing: 1px;
-    background: rgba(212, 175, 55, 0.08);
-    padding: 10px;
-    border-radius: 8px;
-    border: 1px solid rgba(212, 175, 55, 0.4);
+    text-transform: uppercase;
   }
 
+  /* Texto como si estuviera escrito a mano */
   .inside p {
+    font-family: 'Playfair Display', serif;
     font-size: 1.05rem;
-    line-height: 1.7;
-    margin-bottom: 18px;
-    text-align: justify;
-    text-justify: inter-word;
-    color: #444;
+    line-height: 32px; /* Coincide exacto con las rayas del papel */
+    margin-bottom: 32px;
+    text-align: left;
+    color: #333;
+    font-style: italic;
+    padding-left: 5px;
   }
 
-  .inside .firma {
-    margin-top: 25px;
-    font-style: italic;
+  .firma {
+    font-family: 'Great Vibes', cursive;
+    font-size: 2.5rem;
     text-align: right;
-    font-size: 1.2rem;
-    color: #9d7c22;
-    font-weight: bold;
-    padding-right: 10px;
+    color: #b8932a;
+    margin-top: 30px;
+    padding-right: 20px;
+    line-height: 1;
   }
 
   /* Botón de abrir */
@@ -162,7 +193,7 @@
     z-index: 10;
     padding: 16px 40px;
     font-size: 1.1rem;
-    font-family: inherit;
+    font-family: 'Playfair Display', serif;
     letter-spacing: 1px;
     border: 2px solid #fff;
     border-radius: 50px;
@@ -172,10 +203,10 @@
     box-shadow: 0 10px 25px rgba(0,0,0,0.5);
     transition: transform .2s, box-shadow .2s;
   }
-  .btn:hover { transform: translateX(-50%) scale(1.05); box-shadow: 0 15px 30px rgba(0,0,0,0.7); }
+  .btn:hover { transform: translateX(-50%) scale(1.05); }
   .btn.hidden { display: none; }
 
-  /* Botón flotante para pausar la música */
+  /* Botón flotante para la música */
   .music-btn {
     position: fixed;
     bottom: 30px;
@@ -184,8 +215,8 @@
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.2);
-    border: 1px solid rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.4);
     color: #fff;
     font-size: 1.5rem;
     cursor: pointer;
@@ -193,35 +224,40 @@
     align-items: center;
     justify-content: center;
     backdrop-filter: blur(5px);
-    transition: background 0.3s;
   }
-  .music-btn:hover { background: rgba(255, 255, 255, 0.4); }
 
   @media (max-width: 400px) {
     .book { height: 85vh; }
-    .cover h1 { font-size: 1.8rem; }
-    .inside p { font-size: 0.95rem; }
-    .inside h2 { font-size: 1.4rem; }
+    .cover h1 { font-size: 2.8rem; }
+    .inside p { font-size: 0.95rem; line-height: 32px; }
+    .inside h2 { font-size: 2.2rem; }
+    .firma { font-size: 2rem; }
   }
 </style>
 </head>
 <body>
 
   <div class="book" id="book">
-    <!-- PORTADA BLANCA Y DORADA -->
+    <!-- PORTADA CON ÁRBOL DE DIAMANTINA -->
     <div class="page cover">
-      <div class="adorno">🕊️</div>
-      <h1>Invitación<br>Cena de Navidad</h1>
-      <div class="adorno">✨</div>
-      <p>Un momento para compartir en familia</p>
-      <p style="margin-top:25px; font-size:0.85rem; color:#d4af37;">Toca el botón para abrir</p>
+      <h1>Invitación</h1>
+      
+      <div class="arbol-container">
+        <span class="brillo b1">✨</span>
+        <span class="brillo b2">✨</span>
+        <span class="brillo b3">✨</span>
+        <span class="brillo b4">✨</span>
+        <div class="arbol">🎄</div>
+      </div>
+
+      <p>Cena de Navidad en familia</p>
+      <p style="margin-top:35px; font-size:0.85rem; color:#b8932a; font-family: 'Playfair Display', serif; text-transform: uppercase;">Toca el botón para abrir</p>
     </div>
 
-    <!-- INTERIOR ADORNADO -->
+    <!-- INTERIOR CON PAPEL RAYADO -->
     <div class="page inside">
       <h2>Los esperamos en casa</h2>
-      <div class="divisor"></div>
-      <div class="fecha">24 de Diciembre · A partir de las 5:00 PM</div>
+      <div class="fecha">24 de Diciembre · 5:00 PM en adelante</div>
 
       <p>Hola a todos:</p>
 
@@ -231,22 +267,18 @@
 
       <p>Solo les pido algo: vengan con el corazón sincero, sin comentarios que no sean buenos. Si sienten que pueden venir así, adelante, los espero con gusto. Si no, lo lamento, pero lo entiendo. Yo también me estoy tragando mi orgullo, y me gustaría que entre hermanos pudiéramos hacer lo mismo.</p>
 
-      <p>Vengan a la hora que gusten a partir de las 5-6 pm. Por favor confírmenme si pueden asistir para ir organizándome.</p>
+      <p>Vengan a la hora que gusten. Por favor confírmenme si pueden asistir para ir organizándome.</p>
 
-      <div class="firma">Con cariño,<br>Duce ✨</div>
+      <div class="firma">Con cariño,<br>Duce</div>
     </div>
   </div>
 
-  <!-- Botón de abrir -->
-  <button class="btn" id="btn">🎵 Abrir invitación</button>
-  
-  <!-- Botón para silenciar (aparece después de abrir) -->
+  <button class="btn" id="btn">Abrir invitación</button>
   <button class="music-btn" id="music-btn">🔊</button>
 
-  <!-- Reproductor de audio oculto -->
+  <!-- Música: Villancico instrumental clásico -->
   <audio id="bg-music" loop>
-    <!-- Canción navideña instrumental libre de derechos -->
-    <source src="https://www.chosic.com/wp-content/uploads/2021/07/We-Wish-You-A-Merry-Christmas-Piano.mp3" type="audio/mpeg">
+    <source src="https://www.chosic.com/wp-content/uploads/2022/11/Deck-the-Halls.mp3" type="audio/mpeg">
   </audio>
 
 <script>
@@ -268,22 +300,19 @@
   const musicBtn = document.getElementById('music-btn');
   const audio = document.getElementById('bg-music');
 
-  // Abrir tarjeta y reproducir música
+  // Abrir tarjeta y música
   btn.addEventListener('click', () => {
     book.classList.add('open');
     btn.classList.add('hidden');
-    
-    // Mostrar el botón de pausa de música
     musicBtn.style.display = 'flex';
 
-    // Reproducir la canción de fondo
-    audio.volume = 0.5; // Volumen al 50%
+    audio.volume = 0.6; 
     audio.play().catch(error => {
-      console.log("El navegador bloqueó el audio automático, pero el botón ya fue presionado.");
+      console.log("El navegador bloqueó el autoplay inicial.");
     });
   });
 
-  // Botón para pausar/reanudar música
+  // Pausar/reanudar música
   musicBtn.addEventListener('click', () => {
     if (audio.paused) {
       audio.play();
