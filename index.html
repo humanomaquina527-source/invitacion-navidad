@@ -9,63 +9,29 @@
   * { box-sizing: border-box; margin: 0; padding: 0; }
 
   body {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    min-height: 100vh; display: flex; align-items: center; justify-content: center;
     font-family: 'Playfair Display', serif;
-    background: radial-gradient(circle at center, #2a1f18 0%, #110d09 100%);
-    overflow: hidden;
-    padding: 15px;
+    background: radial-gradient(circle at center, #1e150f 0%, #080504 100%);
+    overflow: hidden; padding: 15px;
   }
 
-  /* Copos de nieve */
-  .snow {
-    position: fixed; top: -10px; color: #fff; opacity: 0.6; pointer-events: none; animation: fall linear infinite; z-index: 1;
-  }
+  .snow { position: fixed; top: -10px; color: #fff; opacity: 0.6; pointer-events: none; animation: fall linear infinite; z-index: 1; }
   @keyframes fall { to { transform: translateY(110vh) rotate(360deg); } }
 
-  .book {
-    position: relative; width: 100%; max-width: 480px; height: 82vh; max-height: 750px; perspective: 2000px; z-index: 2;
-  }
+  .book { position: relative; width: 100%; max-width: 480px; height: 82vh; max-height: 750px; perspective: 2000px; z-index: 2; }
 
-  .page {
-    position: absolute; inset: 0; border-radius: 10px; box-shadow: 0 20px 50px rgba(0,0,0,0.8);
-    display: flex; flex-direction: column; backface-visibility: hidden;
-  }
+  .page { position: absolute; inset: 0; border-radius: 8px; box-shadow: 0 20px 50px rgba(0,0,0,0.8); display: flex; flex-direction: column; backface-visibility: hidden; }
 
-  /* PORTADA VINTAGE HECHA CON CSS (No requiere imagen externa) */
+  /* PORTADA CON LA IMAGEN Y RESPALDO POR SI FALLA */
   .cover {
     transform-origin: left center; transition: transform 1.5s cubic-bezier(.4,.2,.2,1); z-index: 3;
-    background: #f4ebd9;
-    background-image: 
-      radial-gradient(circle at 50% 50%, rgba(255,255,255,0.6) 0%, transparent 70%),
-      url('https://www.transparenttextures.com/patterns/aged-paper.png');
-    border: 3px solid #a67c52; 
-    cursor: pointer;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 30px;
+    background-color: #e8dcc8; /* Color de respaldo */
+    background-image: url('portada.jpg'); /* AQUI BUSCA TU IMAGEN */
+    background-size: cover; background-position: center;
+    border: 2px solid #a67c52; cursor: pointer;
+    justify-content: flex-end; align-items: center; padding-bottom: 30px;
   }
 
-  .cover h1 {
-    font-family: 'Cinzel', serif;
-    font-size: 2.5rem;
-    color: #5a3a22;
-    margin-bottom: 20px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-  }
-
-  /* Árbol hecho con formas CSS */
-  .tree-container {
-    margin-top: 20px;
-    font-size: 6rem;
-    filter: drop-shadow(0 10px 10px rgba(0,0,0,0.3));
-  }
-
-  /* Animación de apertura */
   .book.open .cover { transform: rotateY(-175deg); }
 
   /* INTERIOR PAPEL ANTIGUO */
@@ -73,47 +39,20 @@
     z-index: 2; overflow-y: auto;
     background-color: #ece3d2;
     background-image: url('https://www.transparenttextures.com/patterns/aged-paper.png');
-    border: 2px solid #a67c52;
-    padding: 30px 25px;
-    color: #3e2b1e;
-    justify-content: flex-start;
-    position: relative;
+    border: 2px solid #a67c52; padding: 30px 25px; color: #3e2b1e; justify-content: flex-start;
   }
 
-  .inside h2 {
-    font-family: 'Cinzel', serif; font-size: 1.5rem; color: #5a3a22; text-align: center; margin-top: 10px; margin-bottom: 5px;
-  }
+  .inside h2 { font-family: 'Cinzel', serif; font-size: 1.5rem; color: #5a3a22; text-align: center; margin-top: 10px; margin-bottom: 5px; }
+  .divisor { width: 70%; height: 2px; background: linear-gradient(to right, transparent, #a67c52, transparent); margin: 0 auto 15px auto; }
+  .fecha { font-family: 'Cinzel', serif; font-size: 0.95rem; color: #6b4423; text-align: center; margin-bottom: 20px; font-weight: 600; }
+  .inside p { font-family: 'Playfair Display', serif; font-size: 1rem; line-height: 1.6; margin-bottom: 15px; text-align: justify; font-style: italic; }
+  .firma { font-family: 'Great Vibes', cursive; font-size: 2.5rem; text-align: right; color: #5a3a22; margin-top: 15px; padding-right: 10px; }
 
-  .divisor {
-    width: 70%; height: 2px; background: linear-gradient(to right, transparent, #a67c52, transparent); margin: 0 auto 15px auto;
-  }
-
-  .fecha {
-    font-family: 'Cinzel', serif; font-size: 0.95rem; color: #6b4423; text-align: center; margin-bottom: 20px; font-weight: 600;
-  }
-
-  .inside p {
-    font-family: 'Playfair Display', serif; font-size: 1rem; line-height: 1.6; margin-bottom: 15px; text-align: justify; font-style: italic;
-  }
-
-  .firma {
-    font-family: 'Great Vibes', cursive; font-size: 2.5rem; text-align: right; color: #5a3a22; margin-top: 15px; padding-right: 10px;
-  }
-
-  /* BOTONES */
+  /* BOTÓN */
   .btn {
-    position: absolute;
-    bottom: 30px;
-    padding: 12px 25px;
-    font-size: 1rem;
-    font-family: 'Cinzel', serif;
-    border: 2px solid #a67c52;
-    border-radius: 5px;
-    background: #2c1e14;
-    color: #e8d5b5;
-    cursor: pointer;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
-    z-index: 10;
+    padding: 12px 25px; font-size: 1rem; font-family: 'Cinzel', serif; border: 2px solid #a67c52;
+    border-radius: 5px; background: rgba(44, 30, 20, 0.9); color: #e8d5b5; cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5); z-index: 10; backdrop-filter: blur(3px);
   }
   .btn.hidden { display: none; }
 
@@ -127,12 +66,9 @@
 <body>
 
   <div class="book" id="book">
-    <!-- PORTADA (Se abre al darle clic) -->
+    <!-- PORTADA -->
     <div class="page cover" id="cover">
-      <h1>Invitación</h1>
-      <div class="tree-container">🎄</div>
-      <p style="margin-top:20px; color:#6b4423; font-family:'Cinzel', serif;">Cena de Navidad</p>
-      <button class="btn" id="btn">Abrir Tarjeta</button>
+      <button class="btn" id="btn">Abrir Invitación</button>
     </div>
 
     <!-- INTERIOR -->
@@ -153,10 +89,8 @@
 
   <button class="music-btn" id="music-btn">🔊</button>
 
-  <!-- AUDIO: Pista de Noche de Paz desde un servidor confiable -->
-  <audio id="bg-music" loop>
-    <source src="https://cdn.pixabay.com/download/audio/2022/11/23/audio_9504e11404.mp3?filename=silent-night-christmas-piano-117139.mp3" type="audio/mpeg">
-  </audio>
+  <!-- REPRODUCTOR DE YOUTUBE OCULTO (NUNCA FALLA) -->
+  <div id="youtube-player" style="position:fixed; bottom:-500px; left:-500px; width:10px; height:10px; opacity:0; pointer-events:none;"></div>
 
 <script>
   // Copos de nieve
@@ -172,36 +106,57 @@
     document.body.appendChild(s);
   }
 
+  // Cargar API de YouTube
+  var tag = document.createElement('script');
+  tag.src = "https://www.youtube.com/iframe_api";
+  var firstScriptTag = document.getElementsByTagName('script')[0];
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+  var player;
+  function onYouTubeIframeAPIReady() {
+    player = new YT.Player('youtube-player', {
+      height: '10', width: '10',
+      videoId: '7wtfhZwyrcc', // Video de Noche de Paz instrumental
+      playerVars: { 'autoplay': 0, 'controls': 0, 'loop': 1, 'playlist': '7wtfhZwyrcc' },
+      events: { 'onReady': onPlayerReady }
+    });
+  }
+
+  function onPlayerReady(event) { player.setVolume(50); }
+
   const book = document.getElementById('book');
   const cover = document.getElementById('cover');
   const btn = document.getElementById('btn');
   const musicBtn = document.getElementById('music-btn');
-  const audio = document.getElementById('bg-music');
 
-  // FUNCIÓN ABRIR
   function abrirTarjeta(e) {
-    if(e) e.stopPropagation(); // Evita conflictos de clics
+    if(e) e.stopPropagation();
     book.classList.add('open');
     btn.classList.add('hidden');
     musicBtn.style.display = 'flex';
 
-    audio.volume = 0.5; 
-    audio.play().catch(err => console.log("Audio bloqueado por el navegador", err));
+    // Reproducir música de YouTube
+    if(player && player.playVideo) {
+      player.playVideo();
+    }
   }
 
-  // Eventos
   btn.addEventListener('click', abrirTarjeta);
-  cover.addEventListener('click', abrirTarjeta); // También abre si tocan la portada
+  cover.addEventListener('click', abrirTarjeta);
 
+  // Control de pausa
   musicBtn.addEventListener('click', () => {
-    if (audio.paused) {
-      audio.play();
-      musicBtn.textContent = '🔊';
-    } else {
-      audio.pause();
-      musicBtn.textContent = '🔇';
+    if (player && player.getPlayerState) {
+      if (player.getPlayerState() === 1) { // 1 = Playing
+        player.pauseVideo();
+        musicBtn.textContent = '🔇';
+      } else {
+        player.playVideo();
+        musicBtn.textContent = '🔊';
+      }
     }
   });
 </script>
 </body>
+</html>
 </html>
