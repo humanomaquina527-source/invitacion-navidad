@@ -2,158 +2,248 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-<title>Invitación Cena de Navidad - Duce</title>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Playfair+Display:ital,wght@0,400;1,400&family=Great+Vibes&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Invitación a la Cena de Navidad</title>
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
 
   body {
-    min-height: 100vh; display: flex; align-items: center; justify-content: center;
-    font-family: 'Playfair Display', serif;
-    background: radial-gradient(circle at center, #1e150f 0%, #080504 100%);
-    overflow: hidden; padding: 15px;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Georgia', 'Times New Roman', serif;
+    background: radial-gradient(circle at top, #1b2a4a 0%, #0b1120 70%);
+    overflow: hidden;
+    padding: 20px;
   }
 
-  .snow { position: fixed; top: -10px; color: #fff; opacity: 0.6; pointer-events: none; animation: fall linear infinite; z-index: 1; }
-  @keyframes fall { to { transform: translateY(110vh) rotate(360deg); } }
+  /* Copos de nieve */
+  .snow {
+    position: fixed;
+    top: -10px;
+    color: #fff;
+    opacity: 0.8;
+    pointer-events: none;
+    animation: fall linear infinite;
+  }
+  @keyframes fall {
+    to { transform: translateY(110vh) rotate(360deg); }
+  }
 
-  .book { position: relative; width: 100%; max-width: 480px; height: 82vh; max-height: 750px; perspective: 2000px; z-index: 2; }
+  /* Contenedor tipo libro */
+  .book {
+    position: relative;
+    width: 340px;
+    height: 480px;
+    perspective: 1500px;
+    z-index: 2;
+  }
 
-  .page { position: absolute; inset: 0; border-radius: 8px; box-shadow: 0 20px 50px rgba(0,0,0,0.8); display: flex; flex-direction: column; backface-visibility: hidden; }
+  .page {
+    position: absolute;
+    inset: 0;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #fdf6e3 0%, #f5e6c8 100%);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+    padding: 34px 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    color: #4a2c17;
+    backface-visibility: hidden;
+  }
 
-  /* PORTADA CON LA IMAGEN Y RESPALDO POR SI FALLA */
+  /* Hoja que se abre (portada) */
   .cover {
-    transform-origin: left center; transition: transform 1.5s cubic-bezier(.4,.2,.2,1); z-index: 3;
-    background-color: #e8dcc8; /* Color de respaldo */
-    background-image: url('portada.jpg'); /* AQUI BUSCA TU IMAGEN */
-    background-size: cover; background-position: center;
-    border: 2px solid #a67c52; cursor: pointer;
-    justify-content: flex-end; align-items: center; padding-bottom: 30px;
+    transform-origin: left center;
+    transition: transform 1.4s cubic-bezier(.4,.2,.2,1);
+    z-index: 3;
+    background: linear-gradient(135deg, #7a1f1f 0%, #a83232 60%, #7a1f1f 100%);
+    color: #ffe9b0;
+    border: 2px solid #d4af37;
+  }
+  .cover h1 {
+    font-size: 1.7rem;
+    letter-spacing: 2px;
+    margin-bottom: 18px;
+    text-shadow: 0 2px 6px rgba(0,0,0,0.4);
+  }
+  .cover .adorno { font-size: 2rem; margin: 10px 0; }
+  .cover p { font-size: 0.95rem; opacity: 0.9; line-height: 1.5; }
+
+  .book.open .cover {
+    transform: rotateY(-160deg);
   }
 
-  .book.open .cover { transform: rotateY(-175deg); }
-
-  /* INTERIOR PAPEL ANTIGUO */
+  /* Página interior */
   .inside {
-    z-index: 2; overflow-y: auto;
-    background-color: #ece3d2;
-    background-image: url('https://www.transparenttextures.com/patterns/aged-paper.png');
-    border: 2px solid #a67c52; padding: 30px 25px; color: #3e2b1e; justify-content: flex-start;
+    z-index: 2;
+    overflow-y: auto;
+  }
+  .inside h2 {
+    font-size: 1.35rem;
+    color: #7a1f1f;
+    margin-bottom: 6px;
+  }
+  .inside .fecha {
+    font-size: 0.9rem;
+    color: #a83232;
+    margin-bottom: 16px;
+    font-style: italic;
+  }
+  .inside p {
+    font-size: 0.86rem;
+    line-height: 1.55;
+    margin-bottom: 12px;
+    text-align: left;
+  }
+  .inside .firma {
+    margin-top: 14px;
+    font-style: italic;
+    text-align: right;
+    font-size: 0.9rem;
+    color: #7a1f1f;
   }
 
-  .inside h2 { font-family: 'Cinzel', serif; font-size: 1.5rem; color: #5a3a22; text-align: center; margin-top: 10px; margin-bottom: 5px; }
-  .divisor { width: 70%; height: 2px; background: linear-gradient(to right, transparent, #a67c52, transparent); margin: 0 auto 15px auto; }
-  .fecha { font-family: 'Cinzel', serif; font-size: 0.95rem; color: #6b4423; text-align: center; margin-bottom: 20px; font-weight: 600; }
-  .inside p { font-family: 'Playfair Display', serif; font-size: 1rem; line-height: 1.6; margin-bottom: 15px; text-align: justify; font-style: italic; }
-  .firma { font-family: 'Great Vibes', cursive; font-size: 2.5rem; text-align: right; color: #5a3a22; margin-top: 15px; padding-right: 10px; }
-
-  /* BOTÓN */
+  /* Botón */
   .btn {
-    padding: 12px 25px; font-size: 1rem; font-family: 'Cinzel', serif; border: 2px solid #a67c52;
-    border-radius: 5px; background: rgba(44, 30, 20, 0.9); color: #e8d5b5; cursor: pointer;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.5); z-index: 10; backdrop-filter: blur(3px);
+    position: fixed;
+    bottom: 26px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    padding: 14px 30px;
+    font-size: 1rem;
+    font-family: inherit;
+    letter-spacing: 1px;
+    border: 2px solid #d4af37;
+    border-radius: 40px;
+    background: linear-gradient(135deg, #7a1f1f, #a83232);
+    color: #ffe9b0;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.45);
+    transition: transform .2s, box-shadow .2s;
   }
+  .btn:hover { transform: translateX(-50%) scale(1.05); box-shadow: 0 10px 26px rgba(0,0,0,0.6); }
   .btn.hidden { display: none; }
 
-  .music-btn {
-    position: fixed; bottom: 20px; right: 20px; width: 50px; height: 50px; border-radius: 50%;
-    background: rgba(44, 30, 20, 0.9); border: 2px solid #a67c52; color: #e8d5b5; font-size: 1.2rem;
-    cursor: pointer; display: none; align-items: center; justify-content: center; z-index: 20;
+  /* Ajuste para pantallas pequeñas */
+  @media (max-width: 380px) {
+    .book { width: 300px; height: 450px; }
+    .inside p { font-size: 0.8rem; }
   }
 </style>
 </head>
 <body>
 
+  <!-- Contenedor del libro -->
   <div class="book" id="book">
-    <!-- PORTADA -->
-    <div class="page cover" id="cover">
-      <button class="btn" id="btn">Abrir Invitación</button>
+    <!-- Portada que se abre -->
+    <div class="page cover">
+      <div class="adorno">🎄</div>
+      <h1>Invitación<br>Cena de Navidad</h1>
+      <div class="adorno">✨</div>
+      <p>Un momento para compartir en familia</p>
+      <p style="margin-top:18px; font-size:0.8rem;">Toca el botón para abrir</p>
     </div>
 
-    <!-- INTERIOR -->
+    <!-- Interior con el mensaje -->
     <div class="page inside">
       <h2>Los esperamos en casa</h2>
-      <div class="divisor"></div>
-      <div class="fecha">24 de Diciembre · 5:00 PM</div>
+      <div class="fecha">24 de diciembre · [Hora]</div>
 
       <p>Hola a todos:</p>
-      <p>Les escribo porque se acercan las fiestas y he estado pensando mucho en nosotros. Sé que no hemos estado cerca, que ha habido diferencias y comentarios que han dolido, y no voy a fingir que no ha pasado nada. Pero también he pensado en papá y mamá, que ya están grandes, y en cómo la vida pasa tan rápido que a veces no nos damos cuenta de que el tiempo con ellos es un regalo que no se repite.</p>
-      <p>Por eso los invito a una cena de Navidad en la casa de mis papás. No es para hablar del pasado ni para forzar nada. Es solo para estar juntos un rato, compartir la mesa y darles a papá y mamá la alegría de vernos reunidos el tiempo que se pueda.</p>
-      <p>Solo les pido algo: vengan con el corazón sincero, sin comentarios que no sean buenos. Si sienten que pueden venir así, adelante, los espero con gusto. Si no, lo lamento, pero lo entiendo. Yo también me estoy tragando mi orgullo, y me gustaría que entre hermanos pudiéramos hacer lo mismo.</p>
-      <p>Vengan a la hora que gusten. Por favor confírmenme si pueden asistir para ir organizándome.</p>
 
-      <div class="firma">Con cariño,<br>Duce</div>
+      <p>Les escribo porque se acercan las fiestas y he estado pensando mucho en nosotros. Sé que no hemos estado cerca, que ha habido diferencias y comentarios que han dolido, y no voy a fingir que no ha pasado nada. Pero también he pensado en papá y mamá, que ya están grandes, y en cómo la vida pasa tan rápido que a veces no nos damos cuenta de que el tiempo con ellos es un regalo que no se repite.</p>
+
+      <p>Por eso los invito a una cena de Navidad en mi casa. No es para hablar del pasado ni para forzar nada. Es solo para estar juntos un rato, compartir la mesa y darles a papá y mamá la alegría de vernos reunidos el tiempo que se pueda.</p>
+
+      <p>Solo les pido algo: vengan con el corazón sincero, sin comentarios que no sean buenos. Si sienten que pueden venir así, adelante, los espero con gusto. Si no, lo lamento, pero lo entiendo. Yo también me estoy tragando mi orgullo, y me gustaría que entre hermanos pudiéramos hacer lo mismo.</p>
+
+      <p>Por favor confírmenme si pueden asistir para ir organizándome.</p>
+
+      <div class="firma">Con cariño,<br>[Tu nombre]</div>
     </div>
   </div>
 
-  <button class="music-btn" id="music-btn">🔊</button>
-
-  <!-- REPRODUCTOR DE YOUTUBE OCULTO (NOCHE DE PAZ) -->
-  <div id="youtube-player" style="position:fixed; bottom:-500px; left:-500px; width:10px; height:10px; opacity:0; pointer-events:none;"></div>
+  <!-- Botón para abrir y activar música -->
+  <button class="btn" id="btn">🎵 Abrir invitación</button>
 
 <script>
-  // Copos de nieve
+  // ---------- Copos de nieve ----------
   const snowChars = ['❄','❅','❆','•'];
   for (let i = 0; i < 40; i++) {
     const s = document.createElement('div');
     s.className = 'snow';
     s.textContent = snowChars[Math.floor(Math.random()*snowChars.length)];
     s.style.left = Math.random() * 100 + 'vw';
-    s.style.fontSize = (8 + Math.random() * 15) + 'px';
+    s.style.fontSize = (8 + Math.random() * 16) + 'px';
     s.style.animationDuration = (6 + Math.random() * 8) + 's';
     s.style.animationDelay = (Math.random() * 8) + 's';
     document.body.appendChild(s);
   }
 
-  // Cargar API de YouTube
-  var tag = document.createElement('script');
-  tag.src = "https://www.youtube.com/iframe_api";
-  var firstScriptTag = document.getElementsByTagName('script')[0];
-  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+  // ---------- Abrir libro + música ----------
+  const book = document.getElementById('book');
+  const btn = document.getElementById('btn');
+  let audioCtx = null;
+  let musicStarted = false;
 
-  var player;
-  function onYouTubeIframeAPIReady() {
-    player = new YT.Player('youtube-player', {
-      height: '10', width: '10',
-      videoId: 'qJ0L3U6yYqE', // Noche de Paz instrumental
-      playerVars: { 'autoplay': 0, 'controls': 0, 'loop': 1, 'playlist': 'qJ0L3U6yYqE' },
-      events: { 'onReady': onPlayerReady }
+  // Melodía navideña sencilla (We wish you a merry christmas) generada con Web Audio
+  const melody = [
+    // [nota, duración en tiempos]
+    ['C5',1],['C5',0.5],['D5',1],['C5',1],['F5',1],['E5',2],
+    ['C5',1],['C5',0.5],['D5',1],['C5',1],['G5',1],['F5',2],
+    ['C5',1],['C5',0.5],['C6',1],['A5',1],['F5',1],['E5',1],['D5',1],
+    ['Bb5',1],['Bb5',0.5],['A5',1],['F5',1],['G5',1],['F5',2]
+  ];
+  const noteFreq = {
+    'C5':523.25, 'D5':587.33, 'E5':659.25, 'F5':698.46,
+    'G5':783.99, 'A5':880.00, 'Bb5':932.33, 'C6':1046.50
+  };
+
+  function playMelody() {
+    if (!audioCtx) {
+      audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    }
+    const beat = 0.42; // duración de un tiempo en segundos
+    let t = audioCtx.currentTime + 0.1;
+
+    melody.forEach(([note, dur]) => {
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.type = 'sine';
+      osc.frequency.value = noteFreq[note];
+
+      const start = t;
+      const end = t + dur * beat;
+
+      gain.gain.setValueAtTime(0, start);
+      gain.gain.linearRampToValueAtTime(0.12, start + 0.03);
+      gain.gain.exponentialRampToValueAtTime(0.001, end);
+
+      osc.connect(gain).connect(audioCtx.destination);
+      osc.start(start);
+      osc.stop(end);
+
+      t = end;
     });
+
+    // Repetir la melodía en bucle
+    const total = t - audioCtx.currentTime;
+    setTimeout(() => { if (musicStarted) playMelody(); }, total * 1000 + 300);
   }
 
-  function onPlayerReady(event) { player.setVolume(50); }
-
-  const book = document.getElementById('book');
-  const cover = document.getElementById('cover');
-  const btn = document.getElementById('btn');
-  const musicBtn = document.getElementById('music-btn');
-
-  function abrirTarjeta(e) {
-    if(e) e.stopPropagation();
+  btn.addEventListener('click', () => {
     book.classList.add('open');
     btn.classList.add('hidden');
-    musicBtn.style.display = 'flex';
 
-    // Reproducir música de YouTube
-    if(player && player.playVideo) {
-      player.playVideo();
-    }
-  }
-
-  btn.addEventListener('click', abrirTarjeta);
-  cover.addEventListener('click', abrirTarjeta);
-
-  // Control de pausa
-  musicBtn.addEventListener('click', () => {
-    if (player && player.getPlayerState) {
-      if (player.getPlayerState() === 1) { // 1 = Playing
-        player.pauseVideo();
-        musicBtn.textContent = '🔇';
-      } else {
-        player.playVideo();
-        musicBtn.textContent = '🔊';
-      }
+    if (!musicStarted) {
+      musicStarted = true;
+      if (audioCtx && audioCtx.state === 'suspended') audioCtx.resume();
+      playMelody();
     }
   });
 </script>
